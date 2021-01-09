@@ -1,0 +1,40 @@
+---
+title: "Create a simple map"
+author: "Andres Felipe Lagos Ruiz"
+date: "9/1/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+
+This project was created as part of the Developing Data Products course of the Coursera Data Science Specialization. The goal of the project is to create a web page using R Markdown that features a map created with Leaflet, and to host the resulting web page on either GitHub Pages, RPubs, or NeoCities.
+
+#Data Source
+
+ * The site are from some Universities of Bogota - Colombia
+ * The longitude and lantitude data was taken from Google Maps and Latitude Wesbsite
+ 
+## proccess
+
+```{r pressure, echo=FALSE}
+# loading the library
+library(leaflet)
+# plotting the universities in the map
+LatLong<-data.frame(
+  lat = c(4.6281256, 4.6014634, 4.6420969),
+  lng = c(-74.0677305, -74.0683221, -74.091785))
+
+Names<- c('UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS', 'Universidad de los Andes',
+          'Univeridad National of Colombia')
+
+LatLong %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(popup = Names) #popup = puede inyectar urls
+```
+
+
